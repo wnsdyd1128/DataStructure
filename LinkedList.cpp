@@ -52,6 +52,10 @@ public:
 				node->setNext(head);
 				head = node;
 			}
+			else {
+				head->setNext(node);
+				node->setNext(nullptr);
+			}
 			size++;
 			return;
 		}
@@ -73,7 +77,7 @@ public:
 		while (node->getNext() != nullptr) {
 			// node의 data < _data < node의 다음위치의 data라는 부등식을 만족시킬 때 까지 반복
 			if (node->getData() <= _data && _data < node->getNext()->getData()) {
-				break;
+				return node;
 			}
 			node = node->getNext();
 		}
@@ -131,7 +135,7 @@ int main() {
 	cin.tie(NULL);
 	cout.tie(NULL);
 	Linked_List<int> linkedList;
-	for (int i = 10; i >= 1; i--) {
+	for (int i = 1; i <= 10; i++) {
 		linkedList.insert(i);
 	}
 	linkedList.insert(13);
